@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+  <class>ChildDialog</class>
+  <widget class="QDialog" name="ChildDialog">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>400</width>
+        <height>300</height>
+      </rect>
+    </property>
+    <property name="minimumSize">
+      <size>
+        <width>400</width>
+        <height>300</height>
+      </size>
+    </property>
+    <property name="windowTitle">
+      <string>欢迎界面</string>
+    </property>
+    <property name="styleSheet">
+      <string notr="true">
+        /* 全局样式 */
+        QDialog {
+          background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                    stop:0 #e0f7fa, stop:1 #b2ebf2);
+          font-family: "Microsoft YaHei";
+        }
+
+        /* 按钮基础样式 */
+        QPushButton {
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          min-width: 100px;
+          font-weight: bold;
+        }
+
+        /* 进入主界面按钮 */
+        #enterMainBtn {
+          background-color: #00c853;
+          color: white;
+        }
+        #enterMainBtn:hover {
+          background-color: #00e676;
+        }
+
+        /* 退出按钮 */
+        #exitBtn {
+          background-color: #ff5252;
+          color: white;
+        }
+        #exitBtn:hover {
+          background-color: #ff1744;
+        }
+
+        /* 标签样式 */
+        QLabel {
+          font-size: 16px;
+          color: #00796b;
+        }
+      </string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+      <!-- 顶部间距 -->
+      <item>
+        <spacer name="verticalSpacer_top">
+          <property name="orientation">
+            <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+            <size>
+              <width>20</width>
+              <height>40</height>
+            </size>
+          </property>
+        </spacer>
+      </item>
+
+      <!-- 欢迎文本 -->
+      <item>
+        <widget class="QLabel" name="welcomeLabel">
+          <property name="alignment">
+            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="text">
+            <string>欢迎使用本系统</string>
+          </property>
+          <property name="styleSheet">
+            <string notr="true">font-size: 20px; font-weight: bold;</string>
+          </property>
+        </widget>
+      </item>
+
+      <!-- 中间间距 -->
+      <item>
+        <spacer name="verticalSpacer_mid">
+          <property name="orientation">
+            <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+            <size>
+              <width>20</width>
+              <height>60</height>
+            </size>
+          </property>
+        </spacer>
+      </item>
+
+      <!-- 按钮区域 -->
+      <item>
+        <layout class="QHBoxLayout" name="buttonLayout">
+          <item>
+            <spacer name="horizontalSpacer_left">
+              <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+                <size>
+                  <width>40</width>
+                  <height>20</height>
+                </size>
+              </property>
+            </spacer>
+          </item>
+          <item>
+            <widget class="QPushButton" name="enterMainBtn">
+              <property name="objectName">
+                <string>enterMainBtn</string>
+              </property>
+              <property name="text">
+                <string>进入主界面</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <spacer name="horizontalSpacer_mid">
+              <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+                <size>
+                  <width>40</width>
+                  <height>20</height>
+                </size>
+              </property>
+            </spacer>
+          </item>
+          <item>
+            <widget class="QPushButton" name="exitBtn">
+              <property name="objectName">
+                <string>exitBtn</string>
+              </property>
+              <property name="text">
+                <string>退出</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <spacer name="horizontalSpacer_right">
+              <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+                <size>
+                  <width>40</width>
+                  <height>20</height>
+                </size>
+              </property>
+            </spacer>
+          </item>
+        </layout>
+      </item>
+
+      <!-- 底部间距 -->
+      <item>
+        <spacer name="verticalSpacer_bottom">
+          <property name="orientation">
+            <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+            <size>
+              <width>20</width>
+              <height>40</height>
+            </size>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <resources/>
+  <connections>
+    <connection>
+      <sender>exitBtn</sender>
+      <signal>clicked()</signal>
+      <receiver>ChildDialog</receiver>
+      <slot>reject()</slot>
+      <hints>
+        <hint type="sourcelabel">
+          <x>285</x>
+          <y>235</y>
+        </hint>
+        <hint type="destinationlabel">
+          <x>240</x>
+          <y>150</y>
+        </hint>
+      </hints>
+    </connection>
+    <connection>
+      <sender>enterMainBtn</sender>
+      <signal>clicked()</signal>
+      <receiver>ChildDialog</receiver>
+      <slot>accept()</slot>
+      <hints>
+        <hint type="sourcelabel">
+          <x>105</x>
+          <y>235</y>
+        </hint>
+        <hint type="destinationlabel">
+          <x>240</x>
+          <y>150</y>
+        </hint>
+      </hints>
+    </connection>
+  </connections>
+</ui>
