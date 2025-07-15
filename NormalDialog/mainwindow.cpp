@@ -8,6 +8,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    ,_count(0)
 {
     ui->setupUi(this);
 }
@@ -104,6 +105,30 @@ void MainWindow::on_messageDialogBtn_clicked()
 
 void MainWindow::on_progressDialogBtn_clicked()
 {
+    _progressdlg=new QProgressDialog(tr("正在复制当中..."),tr("取消复制"),0,5000,this);
+    _progressdlg->setWindowTitle(tr("复制进度狂"));
+    _progressdlg->setWindowModality(Qt::ApplicationModal);
+    _timer=new QTimer(this);
+    connect(_timer,&QTimer::timeout,this,&MainWindow::update);
+    connect(_progressdlg,&QProgressDialog::canceled,this,&MainWindow::cancle);
+    _timer->start(2);
+}
 
+void MainWindow::cancle(){
+    _timer->stop();
+    delete _timer;
+    _timer=nullptr;
+    delete _progressdlg;
+    _progressdlg=nullptr;
+    _count=0;
+    return;
+}
+
+void MainWindow::update(){
+    _count++;
+    if(_count>5000){
+        MainWindow::cancle();
+    }
+    _progressdlg->setValue(_count);
 }
 
