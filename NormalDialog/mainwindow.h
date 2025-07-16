@@ -37,6 +37,8 @@ private slots:
 
     void cancle();
 
+    void on_wizardDialogBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     QProgressDialog *_progressdlg;
